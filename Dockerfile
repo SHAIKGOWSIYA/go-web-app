@@ -1,24 +1,24 @@
-FROM golang:1.21 as base
+#FROM golang:1.21 as base
 
-WORKDIR /app
+#WORKDIR /app
 
-COPY go.mod .
+#COPY go.mod .
 
-RUN go mod download
+#RUN go mod download
 
-COPY . .
+#COPY . .
 
-RUN go build -o /main .
+#RUN go build -o /main .
 
-FROM gcr.io/distroless/base
+#FROM gcr.io/distroless/base
 
-COPY --from=base /app/main .
+#COPY --from=base /app/main .
 
-COPY --from=base /app/static ./static
+#COPY --from=base /app/static ./static
 
-EXPOSE 8080
+#EXPOSE 8080
 
-CMD [ "./main" ]
+#CMD [ "./main" ]
 
 
 
